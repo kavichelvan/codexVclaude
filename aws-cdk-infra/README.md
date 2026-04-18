@@ -1,6 +1,6 @@
 # aws-cdk-infra
 
-This AWS CDK app provisions a single S3 bucket.
+This AWS CDK app provisions a single S3 bucket and an AWS Budgets monthly cost budget (amount read from `.env`).
 
 ## Prerequisites
 
@@ -34,9 +34,11 @@ This AWS CDK app provisions a single S3 bucket.
 
    `npm run deploy`
 
-8. Confirm the output shows the generated S3 bucket name.
+8. Confirm stack outputs (S3 bucket name from **AwsCdkInfraStack**, budget details from **BillingStack** when deployed).
 
 ## What gets created
+
+### AwsCdkInfraStack
 
 - One S3 bucket
 - Public access blocked
@@ -44,3 +46,10 @@ This AWS CDK app provisions a single S3 bucket.
 - SSL enforced
 - Versioning enabled
 - Bucket name exposed as a CloudFormation output
+
+### BillingStack
+
+- Monthly **account-wide** cost budget (AWS Budgets); amount comes from `MONTHLY_BUDGET_USD` in `.env` (repository default is 10 USD)
+- No email or SNS notifications from CDK; add alerts in the Billing console if you need them
+
+IAM / org note: creating or viewing budgets may require billing-related permissions in your account or organization.
