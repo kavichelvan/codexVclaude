@@ -36,6 +36,18 @@ This AWS CDK app provisions a single S3 bucket and an AWS Budgets monthly cost b
 
 8. Confirm stack outputs (S3 bucket name from **AwsCdkInfraStack**, budget details from **BillingStack** when deployed).
 
+## Run tests
+
+Tests use [Vitest](https://vitest.dev/) and live under `test/`. They do not call AWS; they synthesize stacks and assert on the generated CloudFormation template.
+
+After `npm install` (and from `aws-cdk-infra/`):
+
+| Command | What it does |
+| --- | --- |
+| `npm test` | Run the full suite once (`vitest run`). |
+| `npm run test:watch` | Re-run tests when files change. |
+| `npm run coverage` | Run tests and generate a coverage report (text in the terminal, plus HTML and LCOV under `coverage/`). Open `coverage/index.html` in a browser to view the HTML report. |
+
 ## What gets created
 
 ### AwsCdkInfraStack

@@ -13,6 +13,8 @@
   },
   "include": [
     "bin/**/*.ts",
-    "lib/**/*.ts"
+    "lib/**/*.ts",
+    "test/**/*.ts",
+    "vitest.config.ts"
   ]
 }
