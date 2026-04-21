@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "github": {
+      "source": "C:\\skills\\github_skill",
+      "sourceType": "local",
+      "computedHash": "78c25ef4dbe70f5ec149b7a5d55aadd4b2cb1aa6246c0cfcea66d316bdb5b171"
+    }
+  }
+}

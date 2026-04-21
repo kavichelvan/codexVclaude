@@ -48,6 +48,18 @@ After `npm install` (and from `aws-cdk-infra/`):
 | `npm run test:watch` | Re-run tests when files change. |
 | `npm run coverage` | Run tests and generate a coverage report (text in the terminal, plus HTML and LCOV under `coverage/`). Open `coverage/index.html` in a browser to view the HTML report. |
 
+## Environment variables
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `MONTHLY_BUDGET_USD` | `10` | Monthly cost budget limit in USD |
+| `INFRA_REGION` | `CDK_DEFAULT_REGION` | AWS region for **AwsCdkInfraStack** (S3 bucket) |
+| `BILLING_REGION` | `us-east-1` | AWS region for **BillingStack** — must be `us-east-1` (AWS Budgets API constraint) |
+
+To deploy the S3 stack to a different region, set `INFRA_REGION` in `.env` before running `npm run deploy`.
+
+> **Note:** `BILLING_REGION` defaults to `us-east-1` and should not be changed — AWS Budgets is only available in `us-east-1`.
+
 ## What gets created
 
 ### AwsCdkInfraStack

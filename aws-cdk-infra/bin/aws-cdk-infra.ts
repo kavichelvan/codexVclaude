@@ -9,14 +9,13 @@ config({ path: join(__dirname, "..", ".env") });
 
 const app = new cdk.App();
 
-const env = {
-  account: process.env.CDK_DEFAULT_ACCOUNT,
-  region: process.env.CDK_DEFAULT_REGION,
-};
+const account = process.env.CDK_DEFAULT_ACCOUNT;
 
-new AwsCdkInfraStack(app, "AwsCdkInfraStack", { env });
+new AwsCdkInfraStack(app, "AwsCdkInfraStack", {
+  env: { account, region: process.env.INFRA_REGION || process.env.CDK_DEFAULT_REGION },
+});
 
 new BillingStack(app, "BillingStack", {
-  env,
+  env: { account, region: process.env.BILLING_REGION || "us-east-1" },
   monthlyBudgetUsd: Number(process.env.MONTHLY_BUDGET_USD) || 10,
 });
