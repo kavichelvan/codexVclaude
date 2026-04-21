@@ -1,0 +1,28 @@
+{
+  "name": "aws-cdk-infra",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "synth": "npm run build && cdk synth",
+    "deploy": "npm run build && cdk deploy",
+    "diff": "npm run build && cdk diff",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "aws-cdk": "^2.178.0",
+    "vitest": "^3.2.4",
+    "@vitest/coverage-v8": "^3.2.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.178.0",
+    "constructs": "^10.4.2",
+    "dotenv": "^16.4.5"
+  }
+}
