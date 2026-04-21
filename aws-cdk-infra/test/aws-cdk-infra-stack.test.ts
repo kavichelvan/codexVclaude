@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import * as cdk from "aws-cdk-lib";
-import { Template } from "aws-cdk-lib/assertions";
+import { Match, Template } from "aws-cdk-lib/assertions";
 import { AwsCdkInfraStack } from "../lib/aws-cdk-infra-stack";
 
 describe("AwsCdkInfraStack", () => {
@@ -27,6 +27,23 @@ describe("AwsCdkInfraStack", () => {
         ],
       },
       VersioningConfiguration: { Status: "Enabled" },
+    });
+  });
+
+  it("enforces SSL via bucket policy", () => {
+    const app = new cdk.App();
+    const stack = new AwsCdkInfraStack(app, "TestInfraStackSSL");
+    const template = Template.fromStack(stack);
+
+    template.hasResourceProperties("AWS::S3::BucketPolicy", {
+      PolicyDocument: {
+        Statement: Match.arrayWith([
+          Match.objectLike({
+            Effect: "Deny",
+            Condition: { Bool: { "aws:SecureTransport": "false" } },
+          }),
+        ]),
+      },
     });
   });
 
