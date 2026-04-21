@@ -9,3 +9,5 @@ The stack provisions a single S3 bucket with blocked public access, S3-managed e
 ## Documentation
 
 - See `aws-cdk-infra/README.md` for setup, prerequisites, and execution steps.
+
+First push from Claude and cursor and checking permissions
